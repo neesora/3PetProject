@@ -28,6 +28,10 @@ has_card = np.random.choice([0, 1], size=num_customers)
 is_active = np.random.choice([0, 1], size=num_customers)
 #Estimated salary is a random float between 10,000 and 100,000
 estimated_salary = np.round(np.random.uniform(10000, 100000, size=num_customers), 2)
+#Last purchase month and year
+last_purchase_month = np.random.randint(0, 13, size=num_customers)
+last_purchase_year = np.random.choice([23, 24, 25], size=num_customers)
+last_purchase = list(zip(last_purchase_month, last_purchase_year))
 
 #Total charges is a function of monthly charges and tenure + noise
 total_charges = monthly_charges * tensure + np.random.normal(0, 500, num_customers)
@@ -52,6 +56,7 @@ data = pd.DataFrame({
     'HasCard': has_card,
     'IsActive': is_active,
     'EstimatedSalary': estimated_salary,
+    'LastPurchase': last_purchase,
     'TotalCharges': total_charges,
     'Churn': churn
 })
